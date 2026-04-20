@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ODISSEI Annual Report 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─────────────────────────────────────────────────── */
+:root {
+  --ink:      #0d1e2c;
+  --dark:     #00415a;
+  --brand:    #006489;
+  --mid:      #217b9b;
+  --teal:     #00b1b7;
+  --lblue:    #61ade0;
+  --rule:     #c8dce8;
+  --bg:       #f4f7fa;
+  --paper:    #ffffff;
+  --muted:    #5a7282;
+  --light:    #eaf2f6;
+
+  --serif:    'Roboto Slab', Georgia, serif;
+  --sans:     'Ubuntu', system-ui, sans-serif;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 7rem;
+  --max:      1120px;
+}
+
+/* ─── RESET ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--sans); color: var(--ink); background: var(--bg); line-height: 1.75; -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; }
+p { margin-bottom: 1em; }
+p:last-child { margin-bottom: 0; }
+a { color: var(--teal); text-decoration: none; }
+
+/* ─── NAV ────────────────────────────────────────────────────── */
+.nav {
+  position: fixed; inset: 0 0 auto;
+  z-index: 900;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 60px;
+  background: rgba(0,65,90,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 14px;
+}
+.nav-brand img { height: 28px; }
+.nav-brand-text {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-left: 1px solid rgba(255,255,255,0.2);
+  padding-left: 14px;
+}
+.nav-links { display: flex; list-style: none; gap: 0; }
+.nav-links a {
+  display: flex; align-items: center;
+  padding: 0 1rem; height: 60px;
+  font-size: 0.73rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+}
+.nav-links a:hover,
+.nav-links a.active { color: #fff; border-color: var(--teal); }
+@media(max-width:820px){ .nav-links { display: none; } }
+.nav-pdf-btn {
+  margin-left: 1.5rem;
+  padding: 0.4rem 1rem;
+  background: var(--teal);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background .2s;
+  white-space: nowrap;
+}
+.nav-pdf-btn:hover { background: #009ea4; }
+
+
+/* ─── HERO ───────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  overflow: hidden;
+  background: var(--dark);
+}
+.hero-photo {
+  position: absolute; inset: 0;
+  background: url('assets/cover_hero.jpg') center 30% / cover no-repeat;
+  opacity: 0.25;
+}
+/* Bold diagonal colour block */
+.hero-slab {
+  position: absolute; inset: 0;
+  background: linear-gradient(108deg,
+    rgba(0,65,90,0.92) 0%,
+    rgba(0,65,90,0.92) 52%,
+    rgba(0,177,183,0.18) 52%,
+    transparent 100%);
+}
+.hero-body {
+  position: relative; z-index: 2;
+  padding: 130px 2.5rem 0;
+  max-width: var(--max); margin: 0 auto; width: 100%;
+  align-self: center;
+}
+.hero-eyebrow {
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 2rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block; width: 40px; height: 1px;
+  background: var(--teal);
+}
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(3.2rem, 7.5vw, 6.5rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+}
+.hero-title em {
+  font-style: normal;
+  color: var(--teal);
+  display: block;
+}
+.hero-desc {
+  max-width: 480px;
+  font-size: 1rem; font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+.hero-stats {
+  display: flex; gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 2.5rem;
+  flex-wrap: wrap;
+}
+.hero-stat {
+  padding: 0 2.5rem 0 0;
+  margin-right: 2.5rem;
+  border-right: 1px solid rgba(255,255,255,0.12);
+}
+.hero-stat:last-child { border: none; }
+.hero-stat-num {
+  font-family: var(--serif);
+  font-size: clamp(2rem,4vw,2.8rem); font-weight: 700;
+  color: #fff; line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.hero-stat-label {
+  font-size: 0.72rem; color: rgba(255,255,255,0.45);
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.hero-foot {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 2rem 2.5rem;
+  max-width: var(--max); margin: 0 auto; width: 100%;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.hero-foot p { color: rgba(255,255,255,0.3); font-size: 0.75rem; margin: 0; }
+.scroll-hint {
+  display: flex; align-items: center; gap: 0.6rem;
+  color: rgba(255,255,255,0.35); font-size: 0.72rem; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  animation: nudge 2.4s ease-in-out infinite;
+}
+.scroll-hint svg { width: 16px; height: 16px; }
+@keyframes nudge {
+  0%,100%{ transform:translateY(0) } 50%{ transform:translateY(5px) }
+}
+
+/* ─── SECTION SHELL ──────────────────────────────────────────── */
+.s {
+  padding: var(--space-xl) 0;
+}
+.s--paper  { background: var(--paper); }
+.s--bg     { background: var(--bg); }
+.s--light  { background: var(--light); }
+.s--dark   { background: var(--dark); }
+.s--ink    { background: var(--ink); }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 2.5rem; }
+
+/* ─── SECTION HEADER ─────────────────────────────────────────── */
+.sh {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+  max-width: 680px;
+}
+.sh-tag {
+  font-size: 0.7rem; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 0.85rem;
+  display: flex; align-items: center; gap: 0.8rem;
+  position: relative; z-index: 1;
+}
+.sh-tag::before {
+  content: ''; display: block;
+  width: 24px; height: 1px; background: var(--teal);
+  flex-shrink: 0;
+}
+.s--dark .sh-tag,
+.s--ink .sh-tag { color: var(--teal); }
+.sh-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  position: relative; z-index: 1;
+  margin-bottom: 1rem;
+}
+.s--dark .sh-title,
+.s--ink .sh-title { color: #fff; }
+.sh-body {
+  font-size: 1rem; color: var(--muted); line-height: 1.75;
+  position: relative; z-index: 1;
+}
+.s--dark .sh-body,
+.s--ink .sh-body { color: rgba(255,255,255,0.55); }
+/* Watermark number — decorative only, out of flow */
+.sh-num {
+  position: absolute;
+  right: -0.5rem;
+  top: -0.75rem;
+  font-family: var(--serif);
+  font-size: clamp(6rem, 14vw, 11rem);
+  font-weight: 700;
+  color: var(--light);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+.s--bg   .sh-num { color: #dce8f0; }
+.s--dark .sh-num,
+.s--ink  .sh-num { color: rgba(255,255,255,0.04); }
+
+/* ─── NUMBERS BAND ───────────────────────────────────────────── */
+.numbers-band {
+  background: var(--dark);
+  padding: 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.numbers-row {
+  max-width: var(--max); margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+.n-cell {
+  padding: 3rem 2rem;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  transition: background .25s;
+}
+.n-cell:hover { background: rgba(255,255,255,0.04); }
+.n-num {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--teal);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.n-label {
+  font-size: 0.78rem; color: rgba(255,255,255,0.45);
+  line-height: 1.45; text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ─── CHAIR ──────────────────────────────────────────────────── */
+.chair-layout {
+  display: grid; grid-template-columns: 280px 1fr;
+  gap: 5rem; align-items: start;
+}
+.chair-aside { position: sticky; top: 80px; }
+.chair-photo {
+  width: 100%; aspect-ratio: 3/4; object-fit: cover;
+  border-radius: 4px;
+  filter: grayscale(20%);
+}
+.chair-cap { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); }
+.chair-name { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: var(--ink); }
+.chair-role { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+.chair-text h2 { font-family: var(--serif); font-size: clamp(1.6rem,3vw,2.2rem); font-weight:700; margin-bottom: 1.5rem; color: var(--ink); }
+.pullquote {
+  margin: 2.5rem 0;
+  padding: 2rem 2rem 2rem 2.5rem;
+  border-left: 3px solid var(--teal);
+  background: var(--light);
+  border-radius: 0 4px 4px 0;
+}
+.pullquote p {
+  font-family: var(--serif); font-size: 1.15rem; font-weight: 400;
+  color: var(--dark); line-height: 1.6; margin: 0;
+  font-style: italic;
+}
+@media(max-width:760px){ .chair-layout { grid-template-columns:1fr; } .chair-aside { position:static; } }
+
+/* ─── GOVERNANCE ─────────────────────────────────────────────── */
+.boards {
+  display: grid; grid-template-columns: repeat(2,1fr);
+  gap: 1px; background: var(--rule);
+  border: 1px solid var(--rule); border-radius: 6px; overflow: hidden;
+}
+.board-panel {
+  background: var(--paper);
+  padding: 2.5rem;
+}
+.board-panel h4 {
+  font-family: var(--serif); font-size: 0.9rem; font-weight: 700;
+  color: var(--dark); text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--teal);
+}
+.person-list { list-style: none; }
+.person-list li {
+  display: flex; flex-direction: column;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--bg);
+}
+.person-list li:last-child { border-bottom: none; }
+.person-name { font-size: 0.88rem; font-weight: 500; color: var(--ink); }
+.person-org { font-size: 0.75rem; color: var(--muted); margin-top: 0.1rem; }
+@media(max-width:700px){ .boards { grid-template-columns:1fr; } }
+
+/* ─── WORKSTREAM ─────────────────────────────────────────────── */
+.ws {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; align-items: start;
+}
+.ws-meta { }
+.ws-num {
+  font-family: var(--serif);
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1rem;
+}
+.ws-title {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 700; color: var(--ink);
+  line-height: 1.1; letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.ws-lead {
+  font-size: 0.95rem; color: var(--muted); line-height: 1.7;
+  padding-bottom: 2rem; border-bottom: 1px solid var(--rule);
+  margin-bottom: 2rem;
+}
+.ws-achievements { list-style: none; }
+.ws-achievements li {
+  position: relative;
+  padding: 0.9rem 0 0.9rem 1.5rem;
+  border-bottom: 1px solid var(--bg);
+  font-size: 0.88rem; line-height: 1.6;
+}
+.s--bg .ws-achievements li { border-color: var(--rule); }
+.ws-achievements li:last-child { border-bottom: none; }
+.ws-achievements li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 1.25rem;
+  width: 6px; height: 6px;
+  border-radius: 50%; background: var(--teal);
+  flex-shrink: 0;
+}
+
+/* Budget panel */
+.budget-panel {
+  background: var(--ink);
+  border-radius: 6px;
+  padding: 2.5rem;
+  color: rgba(255,255,255,0.8);
+  position: sticky; top: 80px;
+}
+.bp-total {
+  font-family: var(--serif);
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--teal);
+  margin-bottom: 0.5rem;
+}
+.bp-amount {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700; color: #fff; line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.bp-year { font-size: 0.78rem; color: rgba(255,255,255,0.35); margin-bottom: 2rem; }
+.bp-rule { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin-bottom: 2rem; }
+.bp-item { margin-bottom: 1.5rem; }
+.bp-item:last-child { margin-bottom: 0; }
+.bp-item-head {
+  display: flex; justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.bp-item-label { font-size: 0.78rem; color: rgba(255,255,255,0.55); line-height: 1.4; max-width: 75%; }
+.bp-item-val { font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.9); white-space: nowrap; }
+.bp-track {
+  height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden;
+}
+.bp-fill {
+  height: 100%; background: var(--teal); border-radius: 2px;
+  width: 0; transition: width 1.4s cubic-bezier(.23,1,.32,1);
+}
+.s--bg .budget-panel { background: #0d1e2c; }
+@media(max-width:820px){ .ws { grid-template-columns:1fr; } .budget-panel { position:static; } }
+
+/* ─── PHOTO GALLERY ──────────────────────────────────────────── */
+.gallery-section {
+  background: var(--ink);
+  padding: var(--space-xl) 0;
+}
+.gallery-intro {
+  max-width: var(--max); margin: 0 auto;
+  padding: 0 2.5rem;
+  margin-bottom: 3rem;
+}
+.gallery-grid {
+  max-width: var(--max); margin: 0 auto;
+  padding: 0 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 260px 260px;
+  gap: 6px;
+}
+.gp {
+  overflow: hidden;
+  border-radius: 3px;
+  position: relative;
+}
+.gp img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(15%) brightness(0.92);
+  transition: transform .5s ease, filter .5s ease;
+}
+.gp:hover img { transform: scale(1.04); filter: grayscale(0%) brightness(1); }
+.gp-cap {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 1.5rem 1.25rem 1rem;
+  background: linear-gradient(to top, rgba(0,20,32,0.75) 0%, transparent 100%);
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.gp:hover .gp-cap { opacity: 1; }
+/* Grid placement — 12-col, 2 rows */
+.gp-1  { grid-column: 1 / 6;  grid-row: 1; }   /* wide plenary       */
+.gp-2  { grid-column: 6 / 9;  grid-row: 1; }   /* audience           */
+.gp-3  { grid-column: 9 / 13; grid-row: 1; }   /* poster session     */
+.gp-4  { grid-column: 1 / 4;  grid-row: 2; }   /* workshop           */
+.gp-5  { grid-column: 4 / 7;  grid-row: 2; }   /* networking         */
+.gp-6  { grid-column: 7 / 10; grid-row: 2; }   /* speaker podium     */
+.gp-7  { grid-column: 10/ 13; grid-row: 2; }   /* stage drama        */
+@media(max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, 200px);
+  }
+  .gp-1,.gp-2,.gp-3,.gp-4,.gp-5,.gp-6,.gp-7 {
+    grid-column: auto; grid-row: auto;
+  }
+  .gp-1 { grid-column: 1 / 3; }
+}
+
+/* ─── RESEARCH SPOTLIGHT ─────────────────────────────────────── */
+.papers { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.paper {
+  display: flex; flex-direction: column;
+  border-top: 2px solid var(--teal);
+  padding-top: 1.5rem;
+}
+.paper-field {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--teal);
+  margin-bottom: 1rem;
+}
+.paper h3 {
+  font-family: var(--serif); font-size: 1.05rem; font-weight: 700;
+  color: var(--ink); line-height: 1.4; margin-bottom: 1rem;
+}
+.paper p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; flex: 1; }
+.paper-ref {
+  margin-top: 1.5rem; padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.75rem; color: var(--muted); font-style: italic; line-height: 1.55;
+}
+@media(max-width:700px){ .papers { grid-template-columns:1fr; } }
+
+/* ─── TESTIMONIALS ───────────────────────────────────────────── */
+.testimonials { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+.testi {
+  padding: 2.5rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  display: flex; flex-direction: column;
+}
+.testi-quote {
+  font-family: var(--serif); font-size: 2.5rem; line-height: 1;
+  color: var(--teal); opacity: 0.4; margin-bottom: 1rem;
+  user-select: none;
+}
+.testi p {
+  font-size: 0.92rem; color: rgba(255,255,255,0.7);
+  font-style: italic; line-height: 1.75; flex: 1; margin-bottom: 1.5rem;
+}
+.testi-by { display: flex; align-items: center; gap: 1rem; }
+.testi-avatar {
+  width: 48px; height: 48px; min-width: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(0,177,183,0.35);
+}
+.testi-by-text { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+.testi-by-text strong { color: rgba(255,255,255,0.8); display: block; margin-bottom: 0.15rem; font-size: 0.88rem; }
+@media(max-width:700px){ .testimonials { grid-template-columns:1fr; } }
+
+/* ─── FINANCIALS ─────────────────────────────────────────────── */
+.fin-totals {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px; background: var(--rule);
+  border: 1px solid var(--rule); border-radius: 6px; overflow: hidden;
+  margin-bottom: 3rem;
+}
+.fin-cell {
+  background: var(--paper);
+  padding: 2rem 1.75rem;
+}
+.fin-cell.total-cell { background: var(--dark); }
+.fin-ws-name {
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 0.5rem;
+}
+.fin-cell.total-cell .fin-ws-name { color: var(--teal); }
+.fin-ws-amt {
+  font-family: var(--serif); font-size: 1.75rem; font-weight: 700;
+  color: var(--ink); line-height: 1;
+}
+.fin-cell.total-cell .fin-ws-amt { color: #fff; }
+.fin-ws-desc { font-size: 0.75rem; color: var(--muted); margin-top: 0.4rem; }
+.fin-cell.total-cell .fin-ws-desc { color: rgba(255,255,255,0.45); }
+
+.fin-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.86rem; background: var(--paper);
+  border: 1px solid var(--rule); border-radius: 6px; overflow: hidden;
+}
+.fin-table th {
+  background: var(--ink); color: rgba(255,255,255,0.7);
+  text-align: left; padding: 1rem 1.5rem;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.fin-table th:last-child { text-align: right; }
+.fin-table td { padding: 0.85rem 1.5rem; border-bottom: 1px solid var(--bg); }
+.fin-table td:last-child { text-align: right; font-weight: 600; color: var(--dark); }
+.fin-table tr:last-child td { border-bottom: none; }
+.fin-table .ws-row td { font-weight: 700; color: var(--dark); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; background: var(--light); }
+.fin-table .ws-row td:last-child { color: var(--dark); }
+.fin-table .total-row td { background: var(--dark); color: #fff; font-weight: 700; font-size: 0.92rem; }
+.fin-table .total-row td:last-child { color: var(--teal); }
+.fin-table .sub td { padding-left: 2.5rem; }
+
+/* ─── KPI ────────────────────────────────────────────────────── */
+.kpi-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--rule);
+  border: 1px solid var(--rule); border-radius: 6px; overflow: hidden;
+}
+.kpi-cell {
+  background: var(--paper); padding: 2rem 1.75rem;
+}
+.kpi-cell h4 {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--teal);
+  margin-bottom: 1.25rem; padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+.kpi-list { list-style: none; }
+.kpi-list li {
+  display: flex; align-items: baseline; gap: 0.6rem;
+  padding: 0.55rem 0; border-bottom: 1px solid var(--bg);
+  font-size: 0.84rem; color: var(--muted);
+}
+.kpi-list li:last-child { border-bottom: none; }
+.kpi-list li::before {
+  content: ''; width: 5px; height: 5px; min-width: 5px;
+  border-radius: 50%; background: var(--rule); flex-shrink: 0;
+  margin-top: 0.4rem;
+}
+.kpi-note {
+  margin-top: 2rem;
+  padding: 1.5rem 1.75rem;
+  background: var(--light);
+  border-left: 3px solid var(--teal);
+  border-radius: 0 4px 4px 0;
+  font-size: 0.86rem; color: var(--muted); line-height: 1.7;
+}
+@media(max-width:700px){ .kpi-grid { grid-template-columns:1fr; } }
+
+/* ─── MEMBERS ────────────────────────────────────────────────── */
+.members-strip {
+  display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem;
+}
+.member-chip {
+  padding: 0.45rem 1.1rem;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  font-size: 0.78rem; color: var(--muted);
+  background: var(--paper);
+  transition: border-color .2s, color .2s;
+}
+.member-chip:hover { border-color: var(--teal); color: var(--dark); }
+.member-chip.featured { border-color: var(--teal); color: var(--dark); }
+
+/* ─── INTERSTITIAL BREAKS ────────────────────────────────────── */
+.inter {
+  position: relative;
+  height: 440px;
+  overflow: hidden;
+}
+.inter-bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.55) saturate(0.85);
+  transition: transform 8s ease;
+}
+.inter:hover .inter-bg { transform: scale(1.04); }
+.inter-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg,
+    rgba(0,30,44,0.88) 0%,
+    rgba(0,65,90,0.7) 45%,
+    rgba(0,177,183,0.08) 100%);
+}
+.inter-body {
+  position: relative; z-index: 2;
+  max-width: var(--max); margin: 0 auto;
+  padding: 0 2.5rem;
+  height: 100%;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.inter-tag {
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 1.25rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.inter-tag::before {
+  content: ''; width: 28px; height: 1px;
+  background: var(--teal); flex-shrink: 0;
+}
+.inter-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  font-weight: 700; color: #fff;
+  line-height: 1.1; letter-spacing: -0.02em;
+  max-width: 600px;
+}
+.inter-title em {
+  font-style: normal; color: var(--teal);
+}
+
+/* Inline workstream image accent */
+.ws-img-accent {
+  width: 100%; border-radius: 4px; overflow: hidden;
+  aspect-ratio: 4/3;
+  margin-bottom: 2rem;
+}
+.ws-img-accent img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.92) saturate(0.9);
+  transition: filter .4s;
+}
+.ws-img-accent:hover img { filter: brightness(1) saturate(1); }
+
+/* ─── FOOTER ─────────────────────────────────────────────────── */
+.footer {
+  background: #07141d;
+  padding: 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-brand { display: flex; align-items: center; gap: 12px; }
+.footer-brand img { height: 24px; opacity: 0.7; }
+.footer-brand span { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+.footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.2); text-align: right; line-height: 1.6; }
+
+/* ─── REVEAL ─────────────────────────────────────────────────── */
+.r {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.r.on { opacity: 1; transform: none; }
+.r.d1 { transition-delay: .08s; }
+.r.d2 { transition-delay: .16s; }
+.r.d3 { transition-delay: .24s; }
+.r.d4 { transition-delay: .32s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-brand">
+    <img src="assets/odissei_logo_white.png" alt="ODISSEI" onerror="this.style.display='none'">
+    <span class="nav-brand-text">Annual Report 2025</span>
+  </div>
+  <a class="nav-pdf-btn" href="ODISSEI-Annual-Report-2025.pdf" download>Download PDF</a>
+  <ul class="nav-links">
+    <li><a href="#governance">Governance</a></li>
+    <li><a href="#data">Data</a></li>
+    <li><a href="#observatory">Observatory</a></li>
+    <li><a href="#laboratory">Laboratory</a></li>
+    <li><a href="#hub">Hub</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#financials">Financials</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-slab"></div>
+
+  <div class="hero-body">
+    <p class="hero-eyebrow">Dutch National Research Infrastructure for Social Science</p>
+    <h1 class="hero-title">
+      ODISSEI
+      <em>Annual Report</em>
+      2025
+    </h1>
+    <p class="hero-desc">Bringing together sensitive data, computing resources, and expertise to drive collaborative social science and economic research across the Netherlands.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count="1890">0</div>
+        <div class="hero-stat-label">Publications</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count="45">0</div>
+        <div class="hero-stat-label">Member Orgs</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count="10137">0</div>
+        <div class="hero-stat-label">Portal Datasets</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count="1500" data-suffix="+">0</div>
+        <div class="hero-stat-label">Event Attendees</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-foot">
+    <p>© 2025 ODISSEI</p>
+    <div class="scroll-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      Scroll to explore
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS BAND -->
+<div class="numbers-band">
+  <div class="numbers-row">
+    <div class="n-cell r">
+      <div class="n-num" data-count="623">0</div>
+      <div class="n-label">CBS Microdata Research Projects</div>
+    </div>
+    <div class="n-cell r d1">
+      <div class="n-num" data-count="108">0</div>
+      <div class="n-label">Summer School Alumni</div>
+    </div>
+    <div class="n-cell r d2">
+      <div class="n-num" data-count="5178">0</div>
+      <div class="n-label">Portal Searches in 2025</div>
+    </div>
+    <div class="n-cell r d3">
+      <div class="n-num" data-count="16">0</div>
+      <div class="n-label">Secure Supercomputer Projects</div>
+    </div>
+    <div class="n-cell r d4">
+      <div class="n-num" data-count="52000">0</div>
+      <div class="n-label">Survey Interviews Conducted</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAIR -->
+<section class="s s--paper" id="chair">
+  <div class="wrap">
+    <div class="chair-layout">
+      <div class="chair-aside r">
+        <img class="chair-photo"
+          src="assets/daniel_oberski.jpg"
+          alt="Daniel Oberski"
+          onerror="this.style.cssText='background:var(--light);width:100%;aspect-ratio:3/4;border-radius:4px'">
+        <div class="chair-cap">
+          <div class="chair-name">Daniel Oberski</div>
+          <div class="chair-role">Scientific Director, ODISSEI<br>Chair, Management Board</div>
+        </div>
+      </div>
+      <div class="chair-text r d1">
+        <p class="sh-tag">Message from the Chair</p>
+        <h2>A year of maturation and commitment</h2>
+        <div class="pullquote">
+          <p>"ODISSEI has grown into an indispensable national infrastructure — one that not only connects data, but connects people, disciplines, and institutions in service of research that matters."</p>
+        </div>
+        <p>As we reflect on 2025, ODISSEI has continued its mission to be the connective tissue of Dutch social science research. This year has been marked by both consolidation and bold innovation: we have deepened the services we provide, expanded our membership, and — crucially — supported researchers in addressing the complex social questions that define our era.</p>
+        <p>The submission of the Macroscope proposal, with 31 member organisations already committed to membership through 2031, speaks to the trust the research community places in ODISSEI. This is not merely an administrative milestone — it is a testament to the value of sustained, long-term investment in shared research infrastructure.</p>
+        <p>In 2025, we saw the maturation of key technical services. The ODISSEI Secure Supercomputer, the Secure Analysis Environment, and the ODISSEI Portal each reached new levels of capability and accessibility. The launch of structural funding for SANE and Firmbackbone ensures that these investments will continue to pay dividends for years to come.</p>
+        <p>Equally important is the human dimension of our work. The ODISSEI Conference drew over 440 researchers. The Summer School trained a new generation of computational social scientists. The SoDa team provided hands-on methodological support to researchers navigating increasingly complex data environments. We are proud of what ODISSEI has achieved, and look forward to the next chapter — defined by even greater collaboration, openness, and research impact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOVERNANCE -->
+<section class="s s--bg" id="governance">
+  <div class="wrap">
+    <div class="sh r">
+      <p class="sh-tag">Structure</p>
+      <h2 class="sh-title">Governance</h2>
+      <p class="sh-body">ODISSEI is the Dutch National Infrastructure that brings together sensitive data, computing resources and expertise to drive collaborative social science and economic research. It now consists of <strong>45 member organisations</strong>, with 31 already committed to membership through 2031.</p>
+      <span class="sh-num" aria-hidden="true">01</span>
+    </div>
+
+    <div class="boards r">
+      <div class="board-panel">
+        <h4>Supervisory Board</h4>
+        <ul class="person-list">
+          <li><span class="person-name">Claes de Vreese</span><span class="person-org">DSW — Chair</span></li>
+          <li><span class="person-name">Viola Angelini</span><span class="person-org">DEB</span></li>
+          <li><span class="person-name">Hanneke Imbens</span><span class="person-org">Statistics Netherlands</span></li>
+          <li><span class="person-name">Beate Völker</span><span class="person-org">KNAW / NWO Institutes &amp; E-Infrastructures</span></li>
+          <li><span class="person-name">Susan Branje</span><span class="person-org">DSW</span></li>
+          <li><span class="person-name">Maarten van Ham</span><span class="person-org">DSW</span></li>
+          <li><span class="person-name">Paulette Flore</span><span class="person-org">Public Research Institutes</span></li>
+        </ul>
+      </div>
+      <div class="board-panel">
+        <h4>Management Board</h4>
+        <ul class="person-list">
+          <li><span class="person-name">Daniel Oberski</span><span class="person-org">Utrecht University — Chair</span></li>
+          <li><span class="person-name">Tom Emery</span><span class="person-org">EUR — Executive Director</span></li>
+          <li><span class="person-name">Dorret Boomsma</span><span class="person-org">VU Amsterdam</span></li>
+          <li><span class="person-name">Jessica Piotrowski</span><span class="person-org">University of Amsterdam</span></li>
+          <li><span class="person-name">Marcel Das</span><span class="person-org">Centerdata</span></li>
+          <li><span class="person-name">Ran van den Boom</span><span class="person-org">Statistics Netherlands</span></li>
+          <li><span class="person-name">Annette Langedijk</span><span class="person-org">SURF</span></li>
+          <li><span class="person-name">Collete Bos</span><span class="person-org">NLeSC</span></li>
+          <li><span class="person-name">Anja Smit</span><span class="person-org">DANS</span></li>
+          <li><span class="person-name">Jacco van Ossenbruggen</span><span class="person-org">VU Amsterdam</span></li>
+        </ul>
+      </div>
+      <div class="board-panel">
+        <h4>Coordination Team</h4>
+        <ul class="person-list">
+          <li><span class="person-name">Tom Emery</span><span class="person-org">Director</span></li>
+          <li><span class="person-name">Lucas van der Meer</span><span class="person-org">Chief Technical Officer</span></li>
+          <li><span class="person-name">Kasia Karpinska</span><span class="person-org">Scientific Manager</span></li>
+          <li><span class="person-name">Theodora Canciu</span><span class="person-org">Project Manager</span></li>
+          <li><span class="person-name">Evgeniia Krichever</span><span class="person-org">Communications Manager</span></li>
+          <li><span class="person-name">Angelica Maineri</span><span class="person-org">Data Manager</span></li>
+        </ul>
+      </div>
+      <div class="board-panel">
+        <h4>International Advisory Board</h4>
+        <ul class="person-list">
+          <li><span class="person-name">Julia Lane</span><span class="person-org">New York University</span></li>
+          <li><span class="person-name">Melinda Mills</span><span class="person-org">University of Oxford</span></li>
+          <li><span class="person-name">Sally Wyatt</span><span class="person-org">Maastricht University</span></li>
+          <li><span class="person-name">Amy O'Hara</span><span class="person-org">Georgetown University</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERSTITIAL: GOVERNANCE → DATA -->
+<div class="inter">
+  <div class="inter-bg" style="background-image:url('assets/report_images__cover_viz.jpg')"></div>
+  <div class="inter-overlay"></div>
+  <div class="inter-body">
+    <p class="inter-tag">Programme of Work</p>
+    <h2 class="inter-title">Better infrastructure.<br><em>Better science.</em><br>Better society.</h2>
+  </div>
+</div>
+
+<!-- DATA -->
+<section class="s s--paper" id="data">
+  <div class="wrap">
+    <div class="ws r">
+      <div class="ws-meta">
+        <p class="ws-num">Workstream 01 — Data Facility</p>
+        <h2 class="ws-title">Access, security,<br>and infrastructure</h2>
+        <p class="ws-lead">Improved data access, secure computing, and technical innovation — expanding dataset availability, improving metadata search and linkage, developing the Secure Supercomputer and SANE environments, and deepening collaborations with CBS and SURF.</p>
+        <ul class="ws-achievements">
+          <li>Expanded CBS services including CBS Data Storage for reusing large datasets requiring substantial computational effort to produce.</li>
+          <li>Microdata Access Grant offered twice, resulting in <strong>12 new projects</strong>; introduction of a discount on project start-up costs.</li>
+          <li>CBS launched a self-service portal enhancing user control over projects and microdata use.</li>
+          <li><strong>ODISSEI Knowledge Graph</strong> (Proof of Concept) connecting literature, tools, datasets, variables, projects, organisations, and authors.</li>
+          <li><strong>Data Access Broker (DAB)</strong> reached Proof of Concept stage, standardising access conditions across SSH data providers.</li>
+          <li>OSSC introduced the <strong>TULP pilot</strong> — allowing researchers to upload very large datasets with additional safeguards for sharing sensitive data.</li>
+          <li><strong>App Dashboard finalised</strong>, replacing the command-line interface and lowering technical barriers to secure environments.</li>
+          <li>SANE matured with <strong>20+ active research projects</strong>; SANE and Firmbackbone awarded structural Ministry of Education, Culture and Science funding.</li>
+        </ul>
+      </div>
+      <div class="r d2">
+        <div class="ws-img-accent">
+          <img src="assets/report_images__server_rack.jpg" alt="ODISSEI Secure Supercomputer infrastructure">
+        </div>
+        <div class="budget-panel">
+          <p class="bp-total">Actual Expenditure 2025</p>
+          <div class="bp-amount">€1,462,000</div>
+          <p class="bp-year">Data Facility Workstream</p>
+          <hr class="bp-rule">
+          <div class="bp-item">
+            <div class="bp-item-head">
+              <span class="bp-item-label">Hardware &amp; software capabilities</span>
+              <span class="bp-item-val">€699,000</span>
+            </div>
+            <div class="bp-track"><div class="bp-fill" data-pct="47.8"></div></div>
+          </div>
+          <div class="bp-item">
+            <div class="bp-item-head">
+              <span class="bp-item-label">Metadata interoperability &amp; enrichment (KG, DAB)</span>
+              <span class="bp-item-val">€529,000</span>
+            </div>
+            <div class="bp-track"><div class="bp-fill" data-pct="36.2"></div></div>
+          </div>
+          <div class="bp-item">
+            <div class="bp-item-head">
+              <span class="bp-item-label">Innovative approaches to microdata</span>
+              <span class="bp-item-val">€234,000</span>
+            </div>
+            <div class="bp-track"><div class="bp-fill" data-pct="16"></div></div>
+          </div>
+          <div class="bp-item">
+            <div class="bp-item-head">
+              <span class="bp-item-label">Microdata Access grants &amp; discounts</span>
+              <span class="bp-item-val">€90,000</span>
+            </div>
+            <div class="bp-track"><div class="bp-fill" data-pct="6.2"></div></div>
+          </div>
+          <div class="bp-item">
+            <div class="bp-item-head">
+              <span class="bp-item-label">Firmbackbone — company data access</span>
+              <span class="bp-item-val">€43,923</span>
+            </div>
+            <div class="bp-track"><div class="bp-fill" data-pct="3"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERSTITIAL: DATA → OBSERVATORY -->
+<div class="inter">
+  <div class="inter-bg" style="background-image:url('assets/report_images__server_rack.jpg'); background-position: center center;"></div>
+  <div class="inter-overlay"></div>
+  <div class="inter-body">
+    <p class="inter-tag">Data Facility</p>
+    <h2 class="inter-title">Secure infrastructure<br>for <em>sensitive data</em><br>at national scale.</h2>
+  </div>
+</div>
+
+<!-- OBSERVATORY -->
+<section class="s s--bg" id="observatory">
+  <div class="wrap">
+    <div class="ws r">
+      <div class="ws-meta">
+        <p class="ws-num">Workstream 02 — Observatory</p>
+        <h2 class="ws-title">Data collections<br>for the long run</h2>
+        <p class="ws-lead">Sustaining and developing data collections enabling Dutch researchers to conduct longitudinal, comparative, and population-level social science research — in line with FAIR principles and ethical data practices.</p>
+        <ul class="ws-achievements">
+          <li>LISS panel grant received a <strong>record number of applications</strong>, doubling awarded projects to fifteen — enabling more free researcher-led data collection.</li>
+          <li>Revised sampling strategy with Statistics Netherlands improved coverage of <strong>hard-to-reach population groups</strong>.</li>
+          <li>FAIR Implementation Profile for the LISS Data Archive established to improve findability and reusability.</li>
+          <li>Sensitive LISS data accessible through SANE; research project successfully combining location-enriched LISS data with CBS Statline data demonstrates cross-facility linkage.</li>
+          <li>PANL participant recruitment platform entered full production after secured structural funding.</li>
+          <li>Port software enabled structured data collection from Instagram, TikTok, Google, and Facebook.</li>
+          <li>CBG &amp; Ministry of Interior agreed to transcribe <strong>personal record cards 1939–1994</strong> via OCR, with IISH standardisation expertise and SANE as disclosure infrastructure.</li>
+          <li><strong>SHARE Wave 10</strong> completed and released; ESS Round 12 collected for the first time using a mixed-mode approach; Dutch Parliamentary Election Study supported.</li>
+        </ul>
+      </div>
+      <div class="r d2">
+        <div class="ws-img-accent">
+          <img src="assets/report_images__tablet_survey.jpg" alt="LISS panel survey data collection">
+        </div>
+        <div class="budget-panel">
+          <p class="bp-total">Actual Expenditure 2025</p>
+          <div class="bp-amount">€1,383,000</div>
+          <p class="bp-year">Observatory Workstream</p>
+          <hr class="bp-rule">
+          <div class="bp-item">
+            <div class="bp-item-head">
+              <span class="bp-item-label">SHARE Wave 10</span>
+              <span class="bp-item-val">€250,000</span>
+            </div>
+            <div class="bp-track"><div class="bp-fill" data-pct="18.1"></div></div>
+          </div>
+          <div class="bp-item">
+            <div class="bp-item-head">
+              <span class="bp-item-label">ESS Round 12</span>
+              <span class="bp-item-val">€283,750</span>
+            </div>
+            <div class="bp-track"><div class="bp-fill" data-pct="20.5"></div></div>
+          </div>
+          <div class="bp-item">
+            <div class="bp-item-head">
+              <span class="bp-item-label">Dutch Parliamentary Election Study</span>
+              <span class="bp-item-val">€364,357</span>
+            </div>
+            <div class="bp-track"><div class="bp-fill" data-pct="26.4"></div></div>
+          </div>
+          <div class="bp-item">
+            <div class="bp-item-head">
+              <span class="bp-item-label">LISS panel grant &amp; service</span>
+              <span class="bp-item-val">€235,186</span>
+            </div>
+            <div class="bp-track"><div class="bp-fill" data-pct="17"></div></div>
+          </div>
+          <div class="bp-item">
+            <div class="bp-item-head">
+              <span class="bp-item-label">PaNL — non-probability sample recruitment</span>
+              <span class="bp-item-val">€250,000</span>
+            </div>
+            <div class="bp-track"><div class="bp-fill" data-pct="18.1"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERSTITIAL: OBSERVATORY → LABORATORY -->
+<div class="inter">
+  <div class="inter-bg" style="background-image:url('assets/report_images__tablet_survey.jpg');"></div>
+  <div class="inter-overlay"></div>
+  <div class="inter-body">
+    <p class="inter-tag">Observatory</p>
+    <h2 class="inter-title">Longitudinal data<br>that captures <em>real lives</em><br>over decades.</h2>
+  </div>
+</div>
+
+<!-- LABORATORY -->
+<section class="s s--paper" id="laboratory">
+  <div class="wrap">
+    <div class="ws r">
+      <div class="ws-meta">
+        <p class="ws-num">Workstream 03 — Laboratory</p>
+        <h2 class="ws-title">Innovation at<br>the frontier</h2>
+        <p class="ws-lead">Strengthening ODISSEI's capacity for data-intensive social science by advancing secure distributed processing, data donation, population-scale network analysis (PlaNet-NL), and mass online experimentation — with a focus on usability, scalability, and integration.</p>
+        <ul class="ws-achievements">
+          <li><strong>Digital Data Donation Infrastructure (Port)</strong>: parameters for participant status introduced, pilot with Motivaction completed, iframe integration proposals refined.</li>
+          <li>Restructured Feldspar repository; reusable Python modules and platform-specific scripts consolidated for privacy-preserving data collection.</li>
+          <li>Data donation moved from project-specific implementations to a <strong>shared, reusable framework</strong> — reducing duplication and improving consistency.</li>
+          <li><strong>PlaNet-NL</strong>: Strengthened CBS collaboration, advanced temporal and relational analysis, improved interoperability of large-scale administrative network data.</li>
+          <li>First <strong>oTree-based use case</strong> for mass online experiments developed and ready for piloting.</li>
+          <li>Moved toward robust experimental designs combining survey, behavioural, and administrative data — increasing integration across all components.</li>
+        </ul>
+      </div>
+      <div class="r d2">
+        <div class="ws-img-accent">
+          <img src="assets/report_images__social_media.jpg" alt="Digital data donation and online research">
+        </div>
+        <div class="budget-panel">
+          <p class="bp-total">Actual Expenditure 2025</p>
+          <div class="bp-amount">€384,000</div>
+          <p class="bp-year">Laboratory Workstream</p>
+          <hr class="bp-rule">
+          <div class="bp-item">
+            <div class="bp-item-head">
+              <span class="bp-item-label">Port operations &amp; D3I infrastructure</span>
+              <span class="bp-item-val">€185,000</span>
+            </div>
+            <div class="bp-track"><div class="bp-fill" data-pct="48.2"></div></div>
+          </div>
+          <div class="bp-item">
+            <div class="bp-item-head">
+              <span class="bp-item-label">Mass online experiments feasibility</span>
+              <span class="bp-item-val">€110,000</span>
+            </div>
+            <div class="bp-track"><div class="bp-fill" data-pct="28.6"></div></div>
+          </div>
+          <div class="bp-item">
+            <div class="bp-item-head">
+              <span class="bp-item-label">Population networks — PlaNet-NL</span>
+              <span class="bp-item-val">€88,000</span>
+            </div>
+            <div class="bp-track"><div class="bp-fill" data-pct="22.9"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERSTITIAL: LABORATORY → HUB -->
+<div class="inter">
+  <div class="inter-bg" style="background-image:url('assets/report_images__social_media.jpg');"></div>
+  <div class="inter-overlay"></div>
+  <div class="inter-body">
+    <p class="inter-tag">Laboratory</p>
+    <h2 class="inter-title">New data sources.<br><em>New methods.</em><br>New questions.</h2>
+  </div>
+</div>
+
+<!-- HUB -->
+<section class="s s--bg" id="hub">
+  <div class="wrap">
+    <div class="ws r">
+      <div class="ws-meta">
+        <p class="ws-num">Workstream 04 — Hub</p>
+        <h2 class="ws-title">Community,<br>training, support</h2>
+        <p class="ws-lead">The operational centre of ODISSEI — coordinating daily operations, managing grants, and facilitating cross-institutional engagement so that researchers can focus on their work while strategic priorities and operational delivery remain aligned.</p>
+        <ul class="ws-achievements">
+          <li><strong>ODISSEI Conference 2025</strong>: over 440 researchers, three hands-on workshops, platform for methodological exchange and interdisciplinary collaboration.</li>
+          <li><strong>3,100+ followers</strong> on LinkedIn and Bluesky; regular newsletter and podcast keeping the community informed of developments and opportunities.</li>
+          <li>SoDa team provided hands-on guidance on methodological, ethical, and legal challenges in working with complex linked data.</li>
+          <li><strong>SoDa Fellowship programme</strong>: two application rounds, fostering interdisciplinary collaboration and advanced analytical approaches.</li>
+          <li><strong>ODISSEI-SICSS Summer School</strong> trained 24 early-career researchers in infrastructure use and advanced analytical methods.</li>
+          <li>Two SoDa workshops (~25 participants each) on LLM applications, secure analysis in SANE, and community-developed tools.</li>
+          <li>Tutorials and training materials published online, contributing to a growing network of researchers skilled in working with complex data.</li>
+        </ul>
+      </div>
+      <div class="r d2">
+        <div class="ws-img-accent">
+          <img src="assets/report_images__collaboration.jpg" alt="SoDa team supporting researchers">
+        </div>
+        <div class="budget-panel">
+          <p class="bp-total">Actual Expenditure 2025</p>
+          <div class="bp-amount">€1,400,000</div>
+          <p class="bp-year">Hub Workstream</p>
+          <hr class="bp-rule">
+          <div class="bp-item">
+            <div class="bp-item-head">
+              <span class="bp-item-label">Research support, fellowships &amp; educational activities</span>
+              <span class="bp-item-val">€770,000</span>
+            </div>
+            <div class="bp-track"><div class="bp-fill" data-pct="55"></div></div>
+          </div>
+          <div class="bp-item">
+            <div class="bp-item-head">
+              <span class="bp-item-label">Project &amp; communication management</span>
+              <span class="bp-item-val">€569,000</span>
+            </div>
+            <div class="bp-track"><div class="bp-fill" data-pct="40.6"></div></div>
+          </div>
+          <div style="margin-top:1.75rem; padding:1.25rem; background:rgba(255,255,255,0.05); border-radius:3px; font-size:0.75rem; color:rgba(255,255,255,0.4); line-height:1.65;">
+            Research support includes SoDa fellowships, hands-on project support, FAIR implementation activities, workshops &amp; tutorial development.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERSTITIAL: HUB → GALLERY -->
+<div class="inter">
+  <div class="inter-bg" style="background-image:url('assets/report_images__collaboration.jpg');"></div>
+  <div class="inter-overlay"></div>
+  <div class="inter-body">
+    <p class="inter-tag">Hub</p>
+    <h2 class="inter-title">A national community<br>of researchers doing<br><em>science that matters.</em></h2>
+  </div>
+</div>
+
+<!-- PHOTO GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="gallery-intro">
+    <div class="sh r">
+      <p class="sh-tag">ODISSEI Conference 2025</p>
+      <h2 class="sh-title">440 researchers.<br>One community.</h2>
+      <p class="sh-body">The annual ODISSEI Conference brought together researchers from across the Netherlands and beyond — for plenary sessions, workshops, poster presentations, and interdisciplinary exchange.</p>
+    </div>
+  </div>
+  <div class="gallery-grid r">
+    <div class="gp gp-1">
+      <img src="assets/pictures__nelinadasha.com-1.jpg" alt="Plenary session — Macroscope launch">
+      <div class="gp-cap">Plenary session</div>
+    </div>
+    <div class="gp gp-2">
+      <img src="assets/pictures__nelinadasha.com-10.jpg" alt="Conference audience">
+      <div class="gp-cap">Conference audience</div>
+    </div>
+    <div class="gp gp-3">
+      <img src="assets/pictures__nelinadasha.com-170.jpg" alt="Poster session">
+      <div class="gp-cap">Poster session</div>
+    </div>
+    <div class="gp gp-4">
+      <img src="assets/pictures__nelinadasha.com-80.jpg" alt="Workshop — hands-on training">
+      <div class="gp-cap">Hands-on workshop</div>
+    </div>
+    <div class="gp gp-5">
+      <img src="assets/pictures__nelinadasha.com-120.jpg" alt="Networking between sessions">
+      <div class="gp-cap">Networking</div>
+    </div>
+    <div class="gp gp-6">
+      <img src="assets/pictures__nelinadasha.com-60.jpg" alt="Speaker presentation">
+      <div class="gp-cap">Parallel session</div>
+    </div>
+    <div class="gp gp-7">
+      <img src="assets/conference_keynote.jpg" alt="Stage presentation">
+      <div class="gp-cap">Keynote</div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH SPOTLIGHT -->
+<section class="s s--paper" id="research">
+  <div class="wrap">
+    <div class="sh r">
+      <p class="sh-tag">Scientific Impact</p>
+      <h2 class="sh-title">Research Spotlight</h2>
+      <p class="sh-body">Selected publications enabled by ODISSEI's data infrastructure in 2025, demonstrating the breadth and policy relevance of research conducted using ODISSEI facilities.</p>
+      <span class="sh-num" aria-hidden="true">02</span>
+    </div>
+
+    <div class="papers">
+      <div class="paper r d1">
+        <p class="paper-field">Labour Economics · Register Data</p>
+        <h3>Wage Premium or Wage Penalty? Gendered Long-term Wage Development of Family Caregivers</h3>
+        <p>Drawing on 19 years of CBS register data combined with retrospectively collected caregiving information (N&nbsp;=&nbsp;2,659 respondents; 324,940 person-months), this study evaluates hourly wages across caregiving trajectories — distinguishing between never-carers, current carers, and past carers, as well as by duration and intensity. The results reveal that only men benefit from caregiving in terms of wage growth, while women's wage development is slightly weaker after caregiving episodes. Findings challenge both conflict and enrichment theories, highlighting persistent gendered asymmetries in the Dutch labour market.</p>
+        <div class="paper-ref">Raiber, K., Möhring, K., Visser, M., &amp; Verbakel, E. (2026). <em>Work, Employment and Society</em>, 40(1), 3–25.</div>
+      </div>
+      <div class="paper r d2">
+        <p class="paper-field">Future of Work · LISS Panel</p>
+        <h3>Why are employees most susceptible to automation least likely to retrain?</h3>
+        <p>Using novel LISS panel survey data on Dutch employees (N&nbsp;=&nbsp;1,719), this study investigates the paradox that workers most at risk of automation are least likely to engage in work-related learning. Findings show that these differences are explained by learning intentions and perceived access to education and supportive environments — rather than by subjective perceptions of automation risk. The results inform the design of lifelong learning and active labour market policies in digitising economies.</p>
+        <div class="paper-ref">Jansen, G., Janssen, S., Levels, M., &amp; Fregin, M.-C. (2025). <em>Economic and Industrial Democracy</em>, 0(0).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="s s--ink" id="testimonials">
+  <div class="wrap">
+    <div class="sh r">
+      <p class="sh-tag">Community</p>
+      <h2 class="sh-title">From Our Researchers</h2>
+      <p class="sh-body">Voices from the ODISSEI community on the value of shared infrastructure for social science.</p>
+      <span class="sh-num" aria-hidden="true">03</span>
+    </div>
+    <div class="testimonials">
+      <div class="testi r d1">
+        <div class="testi-quote">&ldquo;</div>
+        <p>The ODISSEI SICSS Summer School provided me with very valuable hands-on experience applying computational methods to Dutch company datasets. Our work culminated in a plenary presentation at the annual ODISSEI conference, offering a great platform to share our findings with a wide professional audience. This experience boosted my skills and expanded my professional network.</p>
+        <div class="testi-by">
+          <img class="testi-avatar" src="assets/koen_steenks.jpg" alt="Koen Steenks">
+          <div class="testi-by-text">
+            <strong>Koen Steenks</strong>
+            Vrije Universiteit Amsterdam · SICSS Summer School participant
+          </div>
+        </div>
+      </div>
+      <div class="testi r d2">
+        <div class="testi-quote">&ldquo;</div>
+        <p>ODISSEI's infrastructure enables us to ask research questions that would simply not be possible without access to linked, longitudinal data. The support from the SoDa team throughout the research process — from data access to analysis — is invaluable for researchers tackling complex methodological and ethical challenges.</p>
+        <div class="testi-by">
+          <img class="testi-avatar" src="assets/Downloads__202510_MWeiper-edited.jpg" alt="Maike Weipler">
+          <div class="testi-by-text">
+            <strong>Maike Weipler</strong>
+            Utrecht University · ODISSEI researcher
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINANCIALS -->
+<section class="s s--paper" id="financials">
+  <div class="wrap">
+    <div class="sh r">
+      <p class="sh-tag">Accountability</p>
+      <h2 class="sh-title">Financial Report 2025</h2>
+      <p class="sh-body">Actual expenditure across all four workstreams in 2025, reflecting ODISSEI's commitment to transparent, mission-aligned resource allocation.</p>
+      <span class="sh-num" aria-hidden="true">04</span>
+    </div>
+
+    <div class="fin-totals r">
+      <div class="fin-cell">
+        <div class="fin-ws-name">Data Facility</div>
+        <div class="fin-ws-amt">€1,462,000</div>
+        <div class="fin-ws-desc">Secure infrastructure, metadata, access grants</div>
+      </div>
+      <div class="fin-cell">
+        <div class="fin-ws-name">Observatory</div>
+        <div class="fin-ws-amt">€1,383,000</div>
+        <div class="fin-ws-desc">Survey data collections, LISS panel, PaNL</div>
+      </div>
+      <div class="fin-cell">
+        <div class="fin-ws-name">Laboratory</div>
+        <div class="fin-ws-amt">€384,000</div>
+        <div class="fin-ws-desc">Port, PlaNet-NL, online experiments</div>
+      </div>
+      <div class="fin-cell">
+        <div class="fin-ws-name">Hub</div>
+        <div class="fin-ws-amt">€1,400,000</div>
+        <div class="fin-ws-desc">Operations, training, community engagement</div>
+      </div>
+      <div class="fin-cell total-cell">
+        <div class="fin-ws-name">Total 2025</div>
+        <div class="fin-ws-amt">€4,629,000</div>
+        <div class="fin-ws-desc">All workstreams combined</div>
+      </div>
+    </div>
+
+    <table class="fin-table r">
+      <thead>
+        <tr><th>Line Item</th><th>Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr class="ws-row"><td>Data Facility</td><td>€1,462,000</td></tr>
+        <tr class="sub"><td>Hardware &amp; software capabilities</td><td>€699,000</td></tr>
+        <tr class="sub"><td>Metadata interoperability &amp; enrichment (KG, DAB)</td><td>€529,000</td></tr>
+        <tr class="sub"><td>Innovative approaches to microdata</td><td>€234,000</td></tr>
+        <tr class="sub"><td>Microdata Access grants &amp; discounts</td><td>€90,000</td></tr>
+        <tr class="sub"><td>Firmbackbone — company data access</td><td>€43,923</td></tr>
+        <tr class="ws-row"><td>Observatory</td><td>€1,383,000</td></tr>
+        <tr class="sub"><td>SHARE Wave 10</td><td>€250,000</td></tr>
+        <tr class="sub"><td>ESS Round 12</td><td>€283,750</td></tr>
+        <tr class="sub"><td>Dutch Parliamentary Election Study</td><td>€364,357</td></tr>
+        <tr class="sub"><td>LISS panel grant &amp; service</td><td>€235,186</td></tr>
+        <tr class="sub"><td>PaNL — non-probability sample recruitment</td><td>€250,000</td></tr>
+        <tr class="ws-row"><td>Laboratory</td><td>€384,000</td></tr>
+        <tr class="sub"><td>Port operations &amp; D3I infrastructure</td><td>€185,000</td></tr>
+        <tr class="sub"><td>Mass online experiments feasibility</td><td>€110,000</td></tr>
+        <tr class="sub"><td>Population networks — PlaNet-NL</td><td>€88,000</td></tr>
+        <tr class="ws-row"><td>Hub</td><td>€1,400,000</td></tr>
+        <tr class="sub"><td>Research support, fellowships &amp; educational activities</td><td>€770,000</td></tr>
+        <tr class="sub"><td>Project &amp; communication management</td><td>€569,000</td></tr>
+        <tr class="total-row"><td>Total Actual Expenditure 2025</td><td>€4,629,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- KPIs -->
+<section class="s s--bg" id="kpis">
+  <div class="wrap">
+    <div class="sh r">
+      <p class="sh-tag">Performance</p>
+      <h2 class="sh-title">Key Performance Indicators</h2>
+      <p class="sh-body">KPIs have been in place since the original ODISSEI Roadmap project, most recently updated in October 2025 in alignment with the SSHOC-NL and Macroscope projects. Status is reviewed annually; targets are proposed by the Coordination Team, amended and approved by the Supervisory Board.</p>
+      <span class="sh-num" aria-hidden="true">05</span>
+    </div>
+    <div class="kpi-grid r">
+      <div class="kpi-cell">
+        <h4>Data &amp; Access</h4>
+        <ul class="kpi-list">
+          <li>10,137 datasets in the ODISSEI Portal</li>
+          <li>623 CBS microdata research projects financed</li>
+          <li>16 projects using ODISSEI Secure Supercomputer</li>
+          <li>20+ active SANE research projects</li>
+          <li>5,178 portal searches in 2025</li>
+        </ul>
+      </div>
+      <div class="kpi-cell">
+        <h4>Community &amp; Training</h4>
+        <ul class="kpi-list">
+          <li>440+ ODISSEI Conference attendees</li>
+          <li>24 summer school participants trained</li>
+          <li>108 cumulative summer school alumni</li>
+          <li>3,100+ LinkedIn &amp; Bluesky followers</li>
+          <li>2 SoDa workshops, ~25 participants each</li>
+        </ul>
+      </div>
+      <div class="kpi-cell">
+        <h4>Research Output</h4>
+        <ul class="kpi-list">
+          <li>1,890 publications in registry</li>
+          <li>15 awarded LISS panel grant projects</li>
+          <li>52,000 survey interviews conducted</li>
+          <li>2,250,000 LISS panel minutes free to researchers</li>
+          <li>45 member organisations</li>
+        </ul>
+      </div>
+    </div>
+    <div class="kpi-note r">
+      <strong>Process:</strong> KPIs are proposed by the Coordination Team and Management Board, then amended and approved by the ODISSEI Supervisory Board — ensuring continuity and alignment with the project's specific and measurable objectives. Targets are reviewed and reset each year.
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERS -->
+<section class="s s--paper" id="members">
+  <div class="wrap">
+    <div class="sh r">
+      <p class="sh-tag">Network</p>
+      <h2 class="sh-title">Member Organisations</h2>
+      <p class="sh-body">ODISSEI brings together <strong>45 member organisations</strong> — universities, research institutes, and data infrastructures. 31 have already committed to membership through 2031.</p>
+      <span class="sh-num" aria-hidden="true">06</span>
+    </div>
+    <div class="members-strip r">
+      <div class="member-chip featured">Utrecht University</div>
+      <div class="member-chip featured">Erasmus University Rotterdam</div>
+      <div class="member-chip featured">University of Amsterdam</div>
+      <div class="member-chip featured">VU Amsterdam</div>
+      <div class="member-chip featured">Statistics Netherlands (CBS)</div>
+      <div class="member-chip featured">SURF</div>
+      <div class="member-chip featured">DANS</div>
+      <div class="member-chip featured">NLeSC</div>
+      <div class="member-chip featured">Centerdata</div>
+      <div class="member-chip">Radboud University</div>
+      <div class="member-chip">Leiden University</div>
+      <div class="member-chip">Maastricht University</div>
+      <div class="member-chip">University of Groningen</div>
+      <div class="member-chip">Tilburg University</div>
+      <div class="member-chip">Wageningen University</div>
+      <div class="member-chip">University of Twente</div>
+      <div class="member-chip">Open University Netherlands</div>
+      <div class="member-chip">KNAW</div>
+      <div class="member-chip">NWO</div>
+      <div class="member-chip">NIDI</div>
+      <div class="member-chip">NIOD</div>
+      <div class="member-chip">IISG</div>
+      <div class="member-chip">Fryske Akademy</div>
+      <div class="member-chip">HSN</div>
+      <div class="member-chip">DNB</div>
+      <div class="member-chip">Deft University of Technology</div>
+      <div class="member-chip">+ 19 more</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">
+    <img src="assets/odissei_logo_white.png" alt="ODISSEI" onerror="this.style.display='none'">
+    <span>Annual Report 2025 — Dutch National Research Infrastructure for Social Science</span>
+  </div>
+  <div class="footer-copy">
+    © 2025 ODISSEI<br>
+    Open Data Infrastructure for Social Science and Economic Innovations
+  </div>
+</footer>
+
+<script>
+/* ── Scroll reveal ── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+}, { threshold: 0.07 });
+document.querySelectorAll('.r').forEach(el => obs.observe(el));
+
+/* ── Budget bar animation ── */
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.bp-fill').forEach(f => { f.style.width = f.dataset.pct + '%'; });
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.25 });
+document.querySelectorAll('.budget-panel').forEach(el => barObs.observe(el));
+
+/* ── Counter animation ── */
+function counter(el) {
+  const target = +el.dataset.count;
+  const suffix = el.dataset.suffix || '';
+  const dur = 1600;
+  const t0 = performance.now();
+  (function tick(now) {
+    const p = Math.min((now - t0) / dur, 1);
+    const v = Math.round((1 - Math.pow(1 - p, 3)) * target);
+    el.textContent = v.toLocaleString() + suffix;
+    if (p < 1) requestAnimationFrame(tick);
+  })(t0);
+}
+const cntObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('[data-count]').forEach(counter);
+      cntObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.hero, .numbers-band').forEach(el => cntObs.observe(el));
+
+/* ── Active nav ── */
+const navAs = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  document.querySelectorAll('section[id]').forEach(s => {
+    if (scrollY >= s.offsetTop - 70) cur = s.id;
+  });
+  navAs.forEach(a => a.classList.toggle('active', a.hash === '#' + cur));
+}, { passive: true });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+function generatePDF() {
+  const btn = document.querySelector('.nav-pdf-btn');
+  btn.textContent = 'Generating…';
+  btn.disabled = true;
+  const opt = {
+    margin: 0,
+    filename: 'ODISSEI-Annual-Report-2025.pdf',
+    image: { type: 'jpeg', quality: 0.95 },
+    html2canvas: { scale: 2, useCORS: true, scrollY: 0 },
+    jsPDF: { unit: 'px', format: [1120, 1584], orientation: 'portrait' },
+    pagebreak: { mode: ['avoid-all', 'css'] }
+  };
+  html2pdf().set(opt).from(document.body).save().then(() => {
+    btn.textContent = 'Download PDF';
+    btn.disabled = false;
+  });
+}
+</script>
+</body>
+</html>
