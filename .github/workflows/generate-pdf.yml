@@ -6,6 +6,7 @@ on:
     paths:
       - 'index.html'
       - 'assets/**'
+      - 'generate-print.js'
 
 permissions:
   contents: write
@@ -43,6 +44,24 @@ jobs:
               timeout: 60000
             });
             await new Promise(r => setTimeout(r, 3000));
+
+            await page.evaluate(() => {
+              document.querySelectorAll('.ws-page').forEach(el => {
+                const inner = el.querySelector('.ws-inner');
+                if (!inner) return;
+                const maxH = el.offsetHeight;
+                const naturalH = inner.scrollHeight;
+                if (naturalH > maxH) {
+                  const scale = (maxH / naturalH) * 0.97;
+                  inner.style.transformOrigin = 'top left';
+                  inner.style.transform = 'scale(' + scale + ')';
+                  inner.style.width = (100 / scale) + '%';
+                }
+              });
+            });
+
+            await new Promise(r => setTimeout(r, 500));
+
             await page.pdf({
               path: 'ODISSEI-Annual-Report-2025.pdf',
               format: 'A4',
