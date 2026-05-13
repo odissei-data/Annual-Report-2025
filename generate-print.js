@@ -414,7 +414,7 @@ ${workstreams.map(ws => wsPage(ws)).join('\n')}
 <!-- BACK COVER -->
 <div class="back-cover">
   <img src="assets/New-logo.png" alt="ODISSEI">
-  <div class="back-url">odissei.nl</div>
+  <div class="back-url">odissei-data.nl</div>
   <div class="back-copy">© 2025 ODISSEI — Dutch National Infrastructure for Social Science</div>
 </div>
 
