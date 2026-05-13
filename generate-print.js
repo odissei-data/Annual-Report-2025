@@ -157,7 +157,7 @@ ul { list-style: none; }
 .cover-bg { position: absolute; inset: 0; background-image: url('assets/cover_hero.jpg'); background-size: cover; background-position: center 40%; filter: brightness(0.45) saturate(0.8); }
 .cover-slab { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(0,20,35,0.92) 0%, rgba(0,40,60,0.75) 55%, rgba(0,100,137,0.08) 100%); }
 .cover-top { position: relative; z-index: 2; padding: 12mm 18mm 6mm; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.12); }
-.cover-logo { height: 32px; }
+.cover-logo { height: 140px; }
 .cover-sep { width: 1px; height: 24px; background: rgba(255,255,255,0.2); }
 .cover-logo-text { font-size: 7pt; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
 .cover-body { position: relative; z-index: 2; padding: 0 18mm; }
@@ -270,7 +270,7 @@ h4 { font-size: 7.5pt; font-weight: 700; letter-spacing: 0.1em; text-transform: 
 .kpi-list li::before { content: ''; position: absolute; left: 0; top: 3mm; width: 4px; height: 4px; border-radius: 50%; background: var(--teal); }
 
 .back-cover { width: 210mm; height: 297mm; background: var(--dark); display: flex; flex-direction: column; align-items: center; justify-content: center; page-break-before: always; gap: 6mm; }
-.back-cover img { height: 40px; }
+.back-cover img { height: 140px; }
 .back-url { font-size: 12pt; color: rgba(255,255,255,0.6); letter-spacing: 0.05em; }
 .back-copy { font-size: 7.5pt; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; }
 </style>
