@@ -282,7 +282,7 @@ h4 { font-size: 7.5pt; font-weight: 700; letter-spacing: 0.1em; text-transform: 
   <div class="cover-bg"></div>
   <div class="cover-slab"></div>
   <div class="cover-top">
-    <img class="cover-logo" src="assets/odissei_logo_white.png" alt="ODISSEI">
+    <img class="cover-logo" src="assets/New-logo.png" alt="ODISSEI">
     <div class="cover-sep"></div>
     <span class="cover-logo-text">Annual Report 2025</span>
   </div>
@@ -413,7 +413,7 @@ ${workstreams.map(ws => wsPage(ws)).join('\n')}
 
 <!-- BACK COVER -->
 <div class="back-cover">
-  <img src="assets/odissei_logo_white.png" alt="ODISSEI">
+  <img src="assets/New-logo.png" alt="ODISSEI">
   <div class="back-url">odissei.nl</div>
   <div class="back-copy">© 2025 ODISSEI — Dutch National Infrastructure for Social Science</div>
 </div>
