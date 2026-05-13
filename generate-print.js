@@ -419,7 +419,7 @@ ${workstreams.map(ws => wsPage(ws)).join('\n')}
 </div>
 
 </body>
-</html>\`;
+</html>`;
 
 fs.writeFileSync('print-generated.html', print);
 console.log('print-generated.html created');
